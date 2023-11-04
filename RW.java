@@ -2,14 +2,14 @@ import java.util.concurrent.Semaphore;
 import java.util.Random;
 
 public class RW {
-    static int buf = 0; // Data
-    static int readCount = 0;
-    static Semaphore mutex = new Semaphore(1);
-    static Semaphore wrt = new Semaphore(1);
-    static Semaphore readerSem = new Semaphore(1);
-    static int numReaders;
-    static int numWriters;
-    static int numAccesses;
+    static int buf = 0; // Shared buffer
+    static int readCount = 0; // Number of readers accessing the buffer
+    static Semaphore mutex = new Semaphore(1); // Controls access to readCount
+    static Semaphore wrt = new Semaphore(1); // Controls access to the buffer
+    static Semaphore readerSem = new Semaphore(1); // Controls access to the buffer
+    static int numReaders; // Number of readers 
+    static int numWriters; // Number of writers
+    static int numAccesses; // Number of accesses each thread should perform
 
     public static void main(String[] args) {
         // Welcome message and instructions
